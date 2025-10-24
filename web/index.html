@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alumni Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="scripts/main.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Alumni Community</h1>
+      <p class="tagline">Connect, collaborate, and celebrate with fellow alumni.</p>
+    </header>
+
+    <main class="app-main">
+      <section class="card" id="auth-section">
+        <h2>Access your account</h2>
+        <div class="tabs" role="tablist">
+          <button
+            id="tab-login"
+            class="tab tab--active"
+            data-target="login-panel"
+            role="tab"
+            aria-controls="login-panel"
+            aria-selected="true"
+          >
+            Login
+          </button>
+          <button
+            id="tab-register"
+            class="tab"
+            data-target="register-panel"
+            role="tab"
+            aria-controls="register-panel"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Register
+          </button>
+        </div>
+
+        <section
+          id="login-panel"
+          class="tabpanel"
+          role="tabpanel"
+          aria-labelledby="tab-login"
+        >
+          <form id="login-form" class="form" autocomplete="on">
+            <label class="form__field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label class="form__field">
+              <span>Password</span>
+              <input type="password" name="password" autocomplete="current-password" required />
+            </label>
+            <button type="submit" class="button button--primary">Sign in</button>
+          </form>
+
+          <details class="accordion" id="reset-accordion">
+            <summary>Forgot password?</summary>
+            <form id="reset-form" class="form form--inline">
+              <label class="form__field">
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+              <button type="submit" class="button">Send reset link</button>
+              <p class="form__hint">We'll email instructions to reset your password.</p>
+            </form>
+          </details>
+        </section>
+
+        <section
+          id="register-panel"
+          class="tabpanel"
+          role="tabpanel"
+          aria-labelledby="tab-register"
+          hidden
+        >
+          <form id="register-form" class="form" autocomplete="on">
+            <label class="form__field">
+              <span>Full name</span>
+              <input type="text" name="fullName" autocomplete="name" required />
+            </label>
+            <label class="form__field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label class="form__field">
+              <span>Password</span>
+              <input type="password" name="password" autocomplete="new-password" minlength="6" required />
+            </label>
+            <label class="form__field">
+              <span>Graduation year <small>(optional)</small></span>
+              <input type="text" name="gradYear" inputmode="numeric" pattern="\d{4}" placeholder="2024" />
+            </label>
+            <label class="form__field">
+              <span>Program <small>(optional)</small></span>
+              <input type="text" name="program" autocomplete="organization" />
+            </label>
+            <p class="form__hint">
+              You'll receive a confirmation email before you can sign in. Update the optional fields anytime from your profile.
+            </p>
+            <button type="submit" class="button button--primary">Create account</button>
+          </form>
+        </section>
+
+        <div
+          id="notification"
+          class="notification"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></div>
+      </section>
+
+      <section class="card" id="profile-section" hidden>
+        <h2>Welcome back!</h2>
+        <p class="profile-intro">
+          You're connected to the alumni network. Explore upcoming events, update your profile, and reach out to classmates.
+        </p>
+        <dl id="profile-summary" class="profile-summary"></dl>
+        <button id="logout-button" class="button button--secondary">Sign out</button>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>&copy; <span id="footer-year"></span> Alumni Association. All rights reserved.</small>
+    </footer>
+  </body>
+</html>
